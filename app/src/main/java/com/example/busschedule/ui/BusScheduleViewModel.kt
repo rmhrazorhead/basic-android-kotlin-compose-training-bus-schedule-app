@@ -29,27 +29,9 @@ class BusScheduleViewModel(private val busScheduleDao: BusScheduleDao): ViewMode
 
     // Get example bus schedule
     fun getFullSchedule(): Flow<List<BusSchedule>> = busScheduleDao.getAll()
-//        flowOf(
-//        listOf(
-//            BusSchedule(
-//                1,
-//                "Example Street",
-//                0
-//            )
-//        )
-//    )
 
     // Get example bus schedule by stop
     fun getScheduleFor(stopName: String): Flow<List<BusSchedule>> = busScheduleDao.getByStopName(stopName)
-//        flowOf(
-//        listOf(
-//            BusSchedule(
-//                1,
-//                "Example Street",
-//                0
-//            )
-//        )
-//    )
 
     companion object {
         val factory : ViewModelProvider.Factory = viewModelFactory {

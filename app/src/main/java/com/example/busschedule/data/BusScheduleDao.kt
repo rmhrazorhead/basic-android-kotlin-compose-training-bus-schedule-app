@@ -6,14 +6,13 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BusScheduleDao {
-//    @Insert(onConflict = OnConflictStrategy.IGNORE)
-//    suspend fun insert(schedule: BusSchedule)
-//
-//    @Update
-//    suspend fun update(schedule: BusSchedule)
-//
-//    @Delete
-//    suspend fun delete(schedule: BusSchedule)
+    @Query(
+        """
+        SELECT * FROM schedule
+        ORDER BY arrival_time ASC
+        """
+    )
+    fun getAll(): Flow<List<BusSchedule>>
 
     @Query(
         """
@@ -23,12 +22,4 @@ interface BusScheduleDao {
         """
     )
     fun getByStopName(stopName: String): Flow<List<BusSchedule>>
-
-    @Query(
-        """
-        SELECT * FROM schedule
-        ORDER BY arrival_time ASC
-        """
-    )
-    fun getAll(): Flow<List<BusSchedule>>
 }
